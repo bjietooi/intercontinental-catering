@@ -14,7 +14,6 @@ import {
   images,
   heroSlides,
   stats,
-  certifications,
   promises,
   services,
   menuCategories,
@@ -26,20 +25,22 @@ import {
 export default function Home() {
   return (
     <>
-      {/* ============== HERO ============== */}
-      <section className="relative isolate flex min-h-[100svh] items-end overflow-hidden bg-ink text-cream">
-        <HeroSlideshow images={heroSlides} />
-        <div className="absolute inset-0 bg-hero-fade" />
-        <div className="absolute inset-0 bg-grain opacity-[0.05] mix-blend-overlay" />
+      {/* ============== HERO (split editorial layout) ============== */}
+      <section className="relative isolate overflow-hidden bg-ink pt-28 text-cream lg:pt-0">
+        {/* ambient */}
+        <div className="pointer-events-none absolute inset-0 bg-grain opacity-[0.05]" />
+        <div className="pointer-events-none absolute -right-32 -top-28 h-[44rem] w-[44rem] rounded-full bg-gold/10 blur-[130px]" />
+        <div className="pointer-events-none absolute -left-40 top-1/2 h-[34rem] w-[34rem] rounded-full bg-navy-light/40 blur-[130px]" />
 
-        <div className="container relative pb-16 pt-32 sm:pb-20">
-          <div className="max-w-4xl">
+        <div className="container relative grid items-center gap-14 py-14 sm:py-20 lg:min-h-[100svh] lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:py-0">
+          {/* LEFT — content */}
+          <div className="max-w-xl lg:py-28">
             <span className="eyebrow animate-fade-in">{company.name} · Since {company.established}</span>
-            <h1 className="mt-6 animate-fade-up font-serif text-6xl font-semibold leading-[0.98] tracking-tight text-shadow-soft sm:text-7xl lg:text-8xl xl:text-[6.6rem]">
-              Memorable Catering,
-              <span className="block italic text-gold">Crafted for You</span>
+            <h1 className="mt-6 animate-fade-up font-serif text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl xl:text-[5rem]">
+              Memorable catering,
+              <span className="mt-1 block italic text-gold">crafted for your events</span>
             </h1>
-            <p className="mt-7 max-w-xl animate-fade-up text-lg leading-relaxed text-sand/85" style={{ animationDelay: '120ms' }}>
+            <p className="mt-7 max-w-md animate-fade-up text-lg leading-relaxed text-sand/85" style={{ animationDelay: '120ms' }}>
               Premium Asian event catering in Singapore — fresh ingredients, thoughtfully curated menus
               and seamless service for every occasion.
             </p>
@@ -47,21 +48,37 @@ export default function Home() {
               <Button to="/menu" variant="primary" arrow>Explore the Menu</Button>
               <Button to="/contact" variant="outline">Request a Quote</Button>
             </div>
+
+            {/* inline animated stats */}
+            <div className="mt-12 flex animate-fade-up flex-wrap gap-x-10 gap-y-5 border-t border-white/10 pt-7" style={{ animationDelay: '320ms' }}>
+              {[stats[0], stats[1], stats[3]].map((s) => (
+                <div key={s.label}>
+                  <p className="font-serif text-3xl font-semibold text-gold sm:text-4xl">
+                    <StatCounter value={s.value} suffix={s.suffix} compact={s.compact} />
+                  </p>
+                  <p className="mt-1 text-xs uppercase tracking-wider text-sand/60">{s.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="mt-14 flex animate-fade-up flex-wrap items-center gap-x-8 gap-y-4 border-t border-white/15 pt-7" style={{ animationDelay: '320ms' }}>
-            {certifications.slice(0, 3).map((c) => (
-              <div key={c.name} className="flex items-center gap-2.5">
-                <Icon name="check" className="h-4 w-4 text-gold" />
-                <span className="text-sm font-medium text-cream/80">{c.name}</span>
+          {/* RIGHT — framed visual */}
+          <div className="relative mx-auto w-full max-w-md animate-scale-in lg:mx-0 lg:max-w-none">
+            <div className="pointer-events-none absolute -inset-3 rounded-[2rem] border border-gold/25 sm:-inset-4" />
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[1.6rem] border border-white/10 shadow-lift">
+              <HeroSlideshow images={heroSlides} />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/55 via-transparent to-ink/10" />
+            </div>
+            <div className="absolute -bottom-5 left-3 flex items-center gap-3 rounded-2xl border border-gold/30 bg-navy/90 px-5 py-4 shadow-lift backdrop-blur sm:-bottom-6 sm:-left-6">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gold/15 text-gold">
+                <Icon name="utensils" className="h-5 w-5" />
+              </span>
+              <div>
+                <p className="font-serif text-base text-cream">Fresh, same-day cooking</p>
+                <p className="text-xs text-sand/60">Asian event catering since 2000</p>
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-
-        <div className="absolute bottom-7 right-6 hidden items-center gap-3 text-xs uppercase tracking-widest text-cream/55 lg:flex">
-          <span className="origin-right rotate-90">Scroll</span>
-          <span className="h-12 w-px animate-pulse bg-gradient-to-b from-gold to-transparent" />
         </div>
       </section>
 
