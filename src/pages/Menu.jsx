@@ -4,7 +4,7 @@ import Reveal from '../components/Reveal.jsx'
 import Button from '../components/Button.jsx'
 import Icon from '../components/Icon.jsx'
 import Img from '../components/Img.jsx'
-import MenuList from '../components/MenuList.jsx'
+import PackageList from '../components/PackageList.jsx'
 import CTASection from '../components/CTASection.jsx'
 import { images, menuCategories } from '../data/content.js'
 
@@ -16,8 +16,8 @@ export default function Menu() {
     <>
       <PageHero
         eyebrow="Our Menu"
-        title="An Asian menu for every occasion"
-        intro="Wok-fired classics, roasts, seafood and noodles — every dish is cooked fresh the same day and fully customisable to your event. Prices are listed per portion, generous enough to share."
+        title="A package for every occasion"
+        intro="From buffets and sit-down dinners to cocktail receptions, seminars, BBQs and bento — choose a package to suit your event, then customise it to taste. Every menu is cooked fresh the same day."
         image={images.banquet}
         crumb="Menu"
       />
@@ -26,17 +26,17 @@ export default function Menu() {
       <Section tone="ink">
         <div className="flex flex-col gap-10">
           <Reveal className="max-w-3xl">
-            <span className="eyebrow">Browse the à la carte</span>
+            <span className="eyebrow">Browse by occasion</span>
             <h2 className="mt-5 font-serif text-3xl font-semibold leading-[1.1] tracking-tight text-cream sm:text-4xl">
-              From chef’s signatures to comforting staples
+              Curated packages, priced per pax
             </h2>
             <p className="mt-5 text-lg leading-relaxed text-sand/80">
-              Mix and match across categories to build a spread that suits your guests. Every dish
-              is prepared from fresh ingredients and styled beautifully for your buffet line.
+              Each package is a complete, balanced menu designed for its occasion — pick a tier to
+              match your headcount and budget, and we’ll tailor the dishes around your guests.
             </p>
             <div className="mt-6 inline-flex items-center gap-3 rounded-full border border-gold/30 bg-gold/10 px-5 py-2.5 text-sm text-gold-light">
               <Icon name="tag" className="h-4 w-4 shrink-0" />
-              <span>Prices are per portion (serves several) — confirm pax on enquiry.</span>
+              <span>Prices are per pax (per set for bento) and exclude delivery — confirm final pax on enquiry.</span>
             </div>
           </Reveal>
 
@@ -87,16 +87,17 @@ export default function Menu() {
                 </div>
               </Reveal>
 
-              {/* Dish list */}
+              {/* Packages */}
               <div className={`${imageFirst ? 'order-1 lg:order-2' : 'order-1'}`}>
                 <Reveal>
                   <span className="eyebrow">{cat.tagline}</span>
                   <h2 className="mt-5 font-serif text-4xl font-semibold leading-[1.05] tracking-tight text-cream sm:text-5xl">
                     {cat.name}
                   </h2>
+                  <p className="mt-4 max-w-md text-base leading-relaxed text-sand/75">{cat.description}</p>
                 </Reveal>
                 <Reveal delay={100} className="mt-8">
-                  <MenuList items={cat.items} />
+                  <PackageList packages={cat.packages} />
                 </Reveal>
               </div>
             </div>
@@ -115,7 +116,7 @@ export default function Menu() {
               <span className="grid h-14 w-14 place-items-center rounded-full bg-gold/15 text-gold">
                 <Icon name="utensils" className="h-6 w-6" />
               </span>
-              <span className="eyebrow mt-7">Beyond the à la carte</span>
+              <span className="eyebrow mt-7">Beyond our packages</span>
               <h2 className="mt-5 font-serif text-3xl font-semibold leading-[1.1] tracking-tight text-cream sm:text-4xl lg:text-[2.75rem]">
                 Customised menus available
               </h2>

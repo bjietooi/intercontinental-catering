@@ -7,7 +7,7 @@ import StatCounter from '../components/StatCounter.jsx'
 import HeroSlideshow from '../components/HeroSlideshow.jsx'
 import ServiceCard from '../components/ServiceCard.jsx'
 import ArticleCard from '../components/ArticleCard.jsx'
-import MenuList from '../components/MenuList.jsx'
+import PackageList from '../components/PackageList.jsx'
 import CTASection from '../components/CTASection.jsx'
 import {
   company,
@@ -130,17 +130,17 @@ export default function Home() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal className="order-2 lg:order-1">
             <div className="overflow-hidden rounded-[1.5rem] border border-white/10 shadow-lift">
-              <Img src={images.shrimp} alt="Signature dish" className="aspect-[4/5] w-full" />
+              <Img src={images.banquet} alt="Buffet spread" className="aspect-[4/5] w-full" />
             </div>
           </Reveal>
           <div className="order-1 lg:order-2">
             <SectionHeading
               eyebrow="From our kitchen"
-              title="A taste of the menu"
-              intro="From wok-fired classics to chef’s signatures — every dish is cooked fresh the same day. Here’s a sample of what our guests love most."
+              title="Menus for every occasion"
+              intro="Complete packages priced per pax — from everyday buffets to premium feasts, all cooked fresh the same day. Here’s a look at our most-loved buffet tiers."
             />
             <Reveal className="mt-8">
-              <MenuList items={menuCategories[0].items} />
+              <PackageList packages={menuCategories[0].packages} />
             </Reveal>
             <Reveal className="mt-9">
               <Button to="/menu" variant="primary" arrow>View Full Menu</Button>

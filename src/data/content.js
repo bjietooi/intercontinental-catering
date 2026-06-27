@@ -111,104 +111,116 @@ export const services = [
 ]
 
 // =============================================================
-//  MENU — Asian à la carte (real priced items + representative)
-//  Prices are per portion (serves several); confirm pax on enquiry.
+//  MENU — organised by event package (mirrors incntl.com.sg/menu)
+//  Prices are per pax (or per set for bento); confirm on enquiry.
 // =============================================================
 export const menuCategories = [
   {
-    slug: 'chef-recommends',
-    name: 'Chef Recommends',
-    tagline: 'Our most-loved signatures',
+    slug: 'buffet',
+    name: 'Buffet',
+    tagline: 'Our signature spread',
+    description:
+      'From everyday favourites to premium feasts — generous buffet lines for any headcount, freshly cooked and beautifully presented.',
+    image: images.banquet,
+    packages: [
+      { name: 'Buffet Menu A', price: '17.44', unit: 'pax', items: '12 dishes', min: 'Min 30' },
+      { name: 'Buffet Menu B', price: '19.62', unit: 'pax', items: '9 dishes', min: 'Min 35' },
+      { name: 'Buffet Menu C', price: '23.98', unit: 'pax', items: '11 dishes', min: 'Min 30' },
+      { name: 'Buffet Menu D', price: '27.25', unit: 'pax', items: '12 dishes', min: 'Min 30' },
+      { name: 'Buffet Menu E', price: '30.52', unit: 'pax', items: '13 dishes', min: 'Min 30' },
+      { name: 'Supreme Buffet A & B', price: '35.97', unit: 'pax', items: '14 dishes', min: 'Min 30' },
+      { name: 'Deluxe Buffet A & B', price: '39.24', unit: 'pax', items: '15 dishes', min: 'Min 30' },
+      { name: 'Premium Buffet A & B', price: '50.14', unit: 'pax', items: '18 dishes', min: 'Min 25' },
+    ],
+  },
+  {
+    slug: 'sit-down',
+    name: 'Sit-Down Dinner',
+    tagline: 'Plated & served',
+    description:
+      'Elegant plated dinners with full table service — Corporate, Western, Chinese or Wedding styles, tailored to your celebration.',
+    image: images.table,
+    packages: [
+      { name: 'Corporate Sit-Down', price: '21.80', unit: 'pax', items: '9 courses', min: 'Min 40' },
+      { name: 'Western Sit-Down', price: '21.80', unit: 'pax', items: '9 courses', min: 'Min 40' },
+      { name: 'Chinese Sit-Down', price: '21.80', unit: 'pax', items: '9 courses', min: 'Min 40' },
+      { name: 'Wedding Sit-Down', price: '21.80', unit: 'pax', items: '9 courses', min: 'Min 40' },
+    ],
+  },
+  {
+    slug: 'cocktail',
+    name: 'Cocktail Reception',
+    tagline: 'Canapés & mingling',
+    description:
+      'Stand-up receptions with elegant canapés and finger food — perfect for launches, networking and evening functions.',
     image: images.shrimp,
-    items: [
-      { name: 'Jumbo Shrimp with Garlic Sauce', price: '6.90', desc: 'Plump prawns wok-tossed in fragrant garlic sauce' },
-      { name: 'Chicken with Garlic Sauce', price: '9.00', desc: 'Tender chicken in a savoury house garlic glaze' },
-      { name: 'Sweet & Sour Chicken', price: '11.00', desc: 'Crispy chicken, pineapple and peppers' },
-      { name: "Vegetarian's Delight", price: '6.50', desc: 'Seasonal greens and mushrooms, lightly braised' },
+    packages: [
+      { name: 'Cocktail Reception A', price: '41.42', unit: 'pax', items: '17 items', min: 'Min 50' },
+      { name: 'Cocktail Reception B', price: '43.60', unit: 'pax', items: '19 items', min: 'Min 40' },
     ],
   },
   {
-    slug: 'beef',
-    name: 'Beef',
-    tagline: 'Hearty wok classics',
-    image: images.beefBroccoli,
-    items: [
-      { name: 'Beef with Broccoli', price: '6.50', desc: 'Sliced beef and crisp broccoli in oyster sauce' },
-      { name: 'Beef Noodle Soup', price: '7.00', desc: 'Comforting broth with tender beef and noodles' },
-      { name: 'Black Pepper Beef', price: '8.00', desc: 'Wok-seared beef with cracked black pepper' },
-      { name: 'Beef Hor Fun', price: '7.50', desc: 'Flat rice noodles in silky egg gravy' },
+    slug: 'tea-reception',
+    name: 'Tea Reception',
+    tagline: 'Light bites & sweet treats',
+    description:
+      'Relaxed savoury and sweet selections to keep conversation flowing at receptions, meetings and breaks.',
+    image: images.dumplings,
+    packages: [
+      { name: 'Tea Reception Menu A', price: '17.44', unit: 'pax', items: '9 items', min: 'Min 50' },
+      { name: 'High Tea Menu A', price: '8.72', unit: 'pax', items: '4 items', min: 'Min 100' },
     ],
   },
   {
-    slug: 'chicken',
-    name: 'Chicken',
-    tagline: 'Crowd favourites',
-    image: images.chicken,
-    items: [
-      { name: 'Spicy Chicken Wings', price: '7.90', desc: 'Crispy wings tossed in a spicy glaze' },
-      { name: 'Sweet & Sour Chicken', price: '11.00', desc: 'A perennial favourite, tangy and bright' },
-      { name: 'Chicken with Garlic Sauce', price: '9.00', desc: 'Aromatic garlic sauce over tender chicken' },
-      { name: 'Kung Pao Chicken', price: '8.50', desc: 'Diced chicken, dried chilli and cashews' },
-      { name: 'Lemon Chicken', price: '8.00', desc: 'Golden chicken in a zesty lemon sauce' },
+    slug: 'seminar',
+    name: 'Seminar',
+    tagline: 'All-day & half-day',
+    description:
+      'Refreshments and meals that keep conferences, workshops and training days running smoothly.',
+    image: images.corporate,
+    packages: [
+      { name: 'Full Day Seminar A & B', price: '36.00', unit: 'pax', items: '19 items', min: 'Min 30', from: true },
+      { name: 'Half Day Seminar A & B', price: '41.42', unit: 'pax', items: '17 items', min: 'Min 50' },
     ],
   },
   {
-    slug: 'pork',
-    name: 'Pork',
-    tagline: 'Roasts & braises',
-    image: images.plating,
-    items: [
-      { name: 'Roast Pork with Vegetables', price: '8.50', desc: 'Crackling roast pork with seasonal greens' },
-      { name: 'Sweet & Sour Pork', price: '8.00', desc: 'Crisp pork, pineapple and peppers' },
-      { name: 'Char Siew', price: '9.00', desc: 'Honey-glazed barbecue pork' },
-    ],
-  },
-  {
-    slug: 'seafood',
-    name: 'Seafood',
-    tagline: 'From the wok & steamer',
+    slug: 'bbq',
+    name: 'BBQ & Live Station',
+    tagline: 'Grilled to order',
+    description:
+      'Sizzling barbecue spreads and interactive live cooking stations that bring theatre to your event.',
     image: images.steam,
-    items: [
-      { name: 'Jumbo Shrimp with Garlic Sauce', price: '6.90', desc: 'Sweet jumbo prawns in garlic sauce' },
-      { name: 'Cereal Prawns', price: '12.00', desc: 'Crispy prawns in buttery cereal' },
-      { name: 'Steamed Fish Fillet', price: '10.00', desc: 'Delicate fillet, superior soy and ginger' },
-      { name: 'Salt & Pepper Squid', price: '9.50', desc: 'Lightly battered, salt-and-pepper tossed' },
+    packages: [
+      { name: 'BBQ Menu A1', price: '21.80', unit: 'pax', items: '9 items', min: 'Min 40' },
+      { name: 'BBQ Menu B', price: '27.25', unit: 'pax', items: '10 items', min: 'Min 35' },
+      { name: 'Live Station', price: '27.25', unit: 'pax', items: '10 items', min: 'Min 100' },
     ],
   },
   {
-    slug: 'vegetables',
-    name: 'Vegetables',
-    tagline: 'Fresh & wholesome',
-    image: images.vegetables,
-    items: [
-      { name: "Vegetarian's Delight", price: '6.50', desc: 'Mixed greens and mushrooms, lightly braised' },
-      { name: 'Broccoli with Mushroom', price: '6.00', desc: 'Crisp broccoli and shiitake in light sauce' },
-      { name: 'Sambal Kang Kong', price: '6.00', desc: 'Water spinach wok-fried with sambal' },
-      { name: 'Braised Beancurd', price: '6.50', desc: 'Silken tofu in a savoury braise' },
-    ],
-  },
-  {
-    slug: 'rice-noodles',
-    name: 'Rice & Noodles',
-    tagline: 'Satisfying staples',
-    image: images.friedRice,
-    items: [
-      { name: 'Yang Chow Fried Rice', price: '6.00', desc: 'Wok-fried rice with prawns, char siew and egg' },
-      { name: 'Hokkien Mee', price: '7.00', desc: 'Braised noodles in rich prawn stock' },
-      { name: 'Seafood Hor Fun', price: '7.50', desc: 'Flat noodles with seafood in egg gravy' },
-      { name: 'Beef Noodle Soup', price: '7.00', desc: 'Tender beef in a comforting broth' },
-    ],
-  },
-  {
-    slug: 'soup-dessert',
-    name: 'Soups & Desserts',
-    tagline: 'To start & to finish',
+    slug: 'baby-shower',
+    name: 'Baby Shower',
+    tagline: 'Celebrate new arrivals',
+    description:
+      'Joyful buffet spreads complete with sweet goodies, styled for baby showers and full-month celebrations.',
     image: images.dessert,
-    items: [
-      { name: 'Hot & Sour Soup', price: '5.00', desc: 'Classic spicy-sour soup with tofu' },
-      { name: 'Sweet Corn Soup', price: '5.00', desc: 'Velvety sweet corn and egg drop' },
-      { name: 'Chilled Mango Pudding', price: '4.00', desc: 'Silky mango pudding, served cold' },
-      { name: 'Almond Beancurd', price: '4.00', desc: 'Smooth almond jelly with fruit' },
+    packages: [
+      { name: 'Baby Shower Buffet A', price: '19.62', unit: 'pax', items: '9 courses + goodies', min: 'Min 35' },
+      { name: 'Baby Shower Buffet B', price: '23.98', unit: 'pax', items: '11 courses + goodies', min: 'Min 30' },
+    ],
+  },
+  {
+    slug: 'bento',
+    name: 'Bento Sets',
+    tagline: 'Individually packed',
+    description:
+      'Hygienically packed bento boxes — fuss-free and ideal for distributed, hybrid or on-the-go events.',
+    image: images.plating,
+    packages: [
+      { name: 'Big Value Bento', price: '7.63', unit: 'set', items: '5 items', min: 'Min 80' },
+      { name: 'Standard & Classic Bento', price: '8.72', unit: 'set', items: '5 items', min: 'Min 50' },
+      { name: 'Supreme Bento', price: '10.90', unit: 'set', items: '6 items', min: 'Min 50' },
+      { name: 'Deluxe Bento', price: '10.90', unit: 'set', items: '5 items', min: 'Min 40' },
+      { name: 'Executive Bento', price: '16.35', unit: 'set', items: '6 items', min: 'Min 20' },
     ],
   },
 ]
