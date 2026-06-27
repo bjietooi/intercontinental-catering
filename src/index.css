@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+
+  body {
+    @apply bg-ink text-cream font-sans antialiased;
+    font-feature-settings: 'kern', 'liga', 'calt';
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif;
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background-color: rgba(184, 150, 90, 0.32);
+    color: #f3eee2;
+  }
+
+  @media (min-width: 1024px) {
+    ::-webkit-scrollbar { width: 11px; }
+    ::-webkit-scrollbar-track { background: #0c1426; }
+    ::-webkit-scrollbar-thumb {
+      background: #2a3a5c;
+      border-radius: 999px;
+      border: 3px solid #0c1426;
+    }
+    ::-webkit-scrollbar-thumb:hover { background: #b8965a; }
+  }
+}
+
+@layer components {
+  /* ---- Buttons ---- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-7 py-3.5 text-[0.82rem] font-medium uppercase tracking-[0.16em] transition-all duration-300 ease-out-expo;
+  }
+  .btn-primary {
+    @apply btn bg-gold text-ink shadow-gold hover:bg-gold-light hover:-translate-y-0.5;
+  }
+  .btn-light {
+    @apply btn bg-cream text-ink hover:bg-white hover:-translate-y-0.5;
+  }
+  .btn-outline {
+    @apply btn border border-cream/25 text-cream hover:border-gold hover:bg-gold hover:text-ink;
+  }
+  .btn-ghost {
+    @apply btn border border-gold/40 text-gold-light hover:bg-gold hover:text-ink;
+  }
+
+  /* ---- Eyebrow ---- */
+  .eyebrow {
+    @apply inline-flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-widest text-gold;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply h-px w-8 bg-gold;
+  }
+  .eyebrow-center::before { @apply hidden; }
+
+  /* ---- Card (dark elevated) ---- */
+  .card {
+    @apply rounded-2xl border border-white/10 bg-navy/60 shadow-soft transition-all duration-500 ease-out-expo;
+  }
+
+  /* ---- Animated underline link ---- */
+  .link-underline { @apply relative; }
+  .link-underline::after {
+    content: '';
+    @apply absolute left-0 -bottom-0.5 h-px w-0 bg-current transition-all duration-300 ease-out;
+  }
+  .link-underline:hover::after { @apply w-full; }
+
+  /* ---- Hairline ---- */
+  .hairline {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-cream/20 to-transparent;
+  }
+}
+
+@layer utilities {
+  .text-shadow-soft { text-shadow: 0 2px 40px rgba(0, 0, 0, 0.6); }
+  .bg-grain { background-image: theme('backgroundImage.grain'); }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+}
